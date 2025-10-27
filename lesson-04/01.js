@@ -20,6 +20,6 @@ function includesElement(arr, el) {
        result = arr[i]; 
     }
   }
-  return !!result;
+  return result === el ?  true : false;
 }
 
