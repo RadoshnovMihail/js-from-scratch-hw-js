@@ -20,4 +20,4 @@ function findUniqueElements(arr) {
   return arr.filter((el, i) => arr.indexOf(el) === i);  
 }
 
-findUniqueElements();
+
