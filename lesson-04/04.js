@@ -16,4 +16,3 @@ function doubleEachCharacter(str) {
   return str.split('').map(el => el + el).join('');
 }
 
-console.log(doubleEachCharacter(str));
