@@ -7,7 +7,10 @@
 */
 
 function capitalizeWords(str) {
- return str.toLowerCase().split(' ').map(el => {
+ const result = str.toLowerCase().split(' ').map(el => {
    return el.charAt(0).toUpperCase() + el.slice(1);
  })
+  return result.join(' ')
 }
+
+console.log(capitalizeWords( "hello world from javascript"))
