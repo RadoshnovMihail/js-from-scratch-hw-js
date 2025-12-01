@@ -18,27 +18,46 @@ const WEB_TECH_IMAGES = [
   'https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/784380b9-6937-42a6-bdfe-869835820234_html-magic-logo.jpg',
 ]
 
+// const prevButton = document.getElementById('prev-button');
+// const nextButton = document.getElementById('next-button');
+// let webImg =document.getElementById('web-tech-image')
+//
+// prevButton.addEventListener('click', function (){
+//   let index = WEB_TECH_IMAGES.indexOf(webImg.src);
+//   if(index < WEB_TECH_IMAGES.length && index > 0){
+//     webImg.setAttribute('src',`${WEB_TECH_IMAGES[index - 1]}`)
+//   } else {
+//     webImg.setAttribute('src',`${WEB_TECH_IMAGES[WEB_TECH_IMAGES.length - 1]}`)
+//   }
+// });
+//
+// nextButton.addEventListener('click', function (){
+//   let index = WEB_TECH_IMAGES.indexOf(webImg.src);
+//   if(index < WEB_TECH_IMAGES.length - 1 && index >= 0){
+//     webImg.setAttribute('src',`${WEB_TECH_IMAGES[index + 1]}`)
+//   } else {
+//     webImg.setAttribute('src',`${WEB_TECH_IMAGES[0]}`)
+//   }
+// });
+//
+
 const prevButton = document.getElementById('prev-button');
 const nextButton = document.getElementById('next-button');
-let webImg =document.getElementById('web-tech-image')
+const webImg = document.getElementById('web-tech-image');
 
-prevButton.addEventListener('click', function (){
-  let index = WEB_TECH_IMAGES.indexOf(webImg.src);
-  if(index < WEB_TECH_IMAGES.length && index > 0){
-    webImg.setAttribute('src',`${WEB_TECH_IMAGES[index - 1]}`)
-  } else {
-    webImg.setAttribute('src',`${WEB_TECH_IMAGES[WEB_TECH_IMAGES.length - 1]}`)
-  }
+let currentIndex = 0;
+
+function updateImage() {
+  webImg.src = WEB_TECH_IMAGES[currentIndex];
+}
+
+prevButton.addEventListener('click', function() {
+  currentIndex = (currentIndex - 1 + WEB_TECH_IMAGES.length) % WEB_TECH_IMAGES.length;
+  updateImage();
 });
 
-nextButton.addEventListener('click', function (){
-  let index = WEB_TECH_IMAGES.indexOf(webImg.src);
-  if(index < WEB_TECH_IMAGES.length - 1 && index >= 0){
-    webImg.setAttribute('src',`${WEB_TECH_IMAGES[index + 1]}`)
-  } else {
-    webImg.setAttribute('src',`${WEB_TECH_IMAGES[0]}`)
-  }
+nextButton.addEventListener('click', function() {
+  currentIndex = (currentIndex + 1) % WEB_TECH_IMAGES.length;
+  updateImage();
 });
 
-// if ( index === WEB_TECH_IMAGES.length - 1)
-// if ( index === 0)
