@@ -10,5 +10,9 @@
 */
 
 function truncate(str, maxLength) {
+return str.length === maxLength ? str :  str.split('').slice(0, 20).join('') + '...'
+
+  }
   // your code
-}
+
+console.log(truncate("Вот, что мне действительно нравится в этом", 20))// "Вот, что мне действи..."
