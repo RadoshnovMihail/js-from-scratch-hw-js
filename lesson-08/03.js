@@ -10,10 +10,11 @@
 */
 
 function truncate(str, maxLength) {
-return str.length === maxLength ? str :  str.split('').slice(0, maxLength).join('') + '...'
+return str.length <= maxLength || str === '' ? str :  str.split('').slice(0, maxLength).join('') + '...'
 
   }
   // your code
 
 console.log(truncate("Вот, что мне действительно нравится в этом", 20))// "Вот, что мне действи..."
 console.log(truncate("Вот, что мне действи", 20))
+console.log(truncate(''))
