@@ -3,8 +3,7 @@ const cancelButton = document.getElementById('cancel')
 const countdownDisplay = document.getElementById('countdown')
 
 let timerId = null
-let counter = 3
-
+let counter = 0
 
 function stopTimer() {
   if (timerId) {
@@ -13,40 +12,29 @@ function stopTimer() {
   }
 }
 
-
-function updateDisplay(text) {
-  countdownDisplay.textContent = text
-}
-
-
 startButton.addEventListener('click', () => {
-
-  stopTimer()
-
+  if (timerId !== null) {
+    return
+  }
 
   counter = 3
-
-  // Немедленно отображаем 3
-  updateDisplay(counter)
-
+  countdownDisplay.textContent = counter
 
   timerId = setInterval(() => {
     counter--
 
     if (counter > 0) {
-      updateDisplay(counter)
+      countdownDisplay.textContent = counter
     } else {
-      updateDisplay('🚀')
+      countdownDisplay.textContent = '🚀'
       stopTimer()
     }
   }, 1000)
 })
 
-
 cancelButton.addEventListener('click', () => {
-  // Останавливаем таймер только если он запущен
-  if (timerId) {
+  if (timerId !== null) {
     stopTimer()
-    updateDisplay('Отменено')
+    countdownDisplay.textContent = 'Отменено'
   }
 })
